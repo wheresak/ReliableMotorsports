@@ -1,0 +1,27 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { blogPosts } from '../../lib/blog';
+---
+
+<Layout title="Blog" description="Insights, maintenance tips, and local automotive advice for Scarborough drivers and car enthusiasts.">
+  <main class="section">
+    <div class="container">
+      <div class="page-header reveal">
+        <div class="eyebrow">Blog</div>
+        <h1>Blog</h1>
+        <p>Insights, maintenance tips, and local automotive advice for Scarborough drivers and car enthusiasts.</p>
+      </div>
+
+      <div class="blog-grid">
+        {blogPosts.map((post) => (
+          <a href={`/blog/${post.slug}`} class="card-link reveal">
+            <article class="card">
+              <h3>{post.title}</h3>
+              <p>{post.excerpt}</p>
+            </article>
+          </a>
+        ))}
+      </div>
+    </div>
+  </main>
+</Layout>

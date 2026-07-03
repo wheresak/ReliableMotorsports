@@ -1,0 +1,79 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { siteConfig } from '../lib/siteConfig';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const { title, description = siteConfig.description, ogImage = '/logo/reliable-logo.png' } = Astro.props;
+
+const pageTitle = title === siteConfig.siteName ? title : `${title} | ${siteConfig.siteName}`;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImageURL = new URL(ogImage, Astro.site);
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'AutoRepair',
+  name: siteConfig.siteName,
+  description: siteConfig.description,
+  url: siteConfig.siteUrl,
+  telephone: siteConfig.phone,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '40 Barbados Blvd, Unit 7',
+    addressLocality: 'Scarborough',
+    addressRegion: 'ON',
+    postalCode: 'M1J 1L1',
+    addressCountry: 'CA',
+  },
+  sameAs: [siteConfig.instagramUrl],
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <link rel="icon" type="image/png" href="/logo/reliable-logo.png" />
+
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:site_name" content={siteConfig.siteName} />
+    <meta property="og:image" content={ogImageURL} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body>
+    <div class="site-bg"></div>
+    <div class="site-grid"></div>
+
+    <Header />
+    <slot />
+    <Footer />
+
+    <script src="../scripts/site.ts"></script>
+  </body>
+</html>

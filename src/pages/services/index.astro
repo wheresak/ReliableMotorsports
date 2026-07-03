@@ -1,0 +1,28 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { services, serviceOverview } from '../../lib/services';
+---
+
+<Layout title="Services" description={serviceOverview.intro}>
+  <main class="section">
+    <div class="container">
+      <div class="page-header reveal">
+        <div class="eyebrow">What We Do</div>
+        <h1>{serviceOverview.title}</h1>
+        <p>{serviceOverview.intro}</p>
+      </div>
+
+      <div class="services-grid">
+        {services.map((service, index) => (
+          <a href={`/services/${service.slug}`} class="card-link reveal">
+            <article class="service-card">
+              <div class="service-icon">{String(index + 1).padStart(2, '0')}</div>
+              <h3>{service.title.replace(' — Scarborough, ON', '')}</h3>
+              <p>{service.intro}</p>
+            </article>
+          </a>
+        ))}
+      </div>
+    </div>
+  </main>
+</Layout>

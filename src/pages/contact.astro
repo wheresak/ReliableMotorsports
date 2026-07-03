@@ -1,0 +1,87 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { siteConfig } from '../lib/siteConfig';
+---
+
+<Layout title="Contact" description="Reach out to book service, ask about a repair, or discuss your next modification with Reliable Motorsports.">
+  <main class="section">
+    <div class="container">
+      <div class="page-header reveal">
+        <div class="eyebrow">Let&rsquo;s Get Your Car In</div>
+        <h1>Contact Reliable Motorsports</h1>
+        <p>Reach out to book service, ask about a repair, or discuss your next modification.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-panel reveal">
+          <h2>Contact Info</h2>
+          <div class="contact-info-list">
+            <div class="contact-info-item">
+              <span class="contact-label">Address</span>
+              <p>{siteConfig.address}</p>
+            </div>
+            <div class="contact-info-item">
+              <span class="contact-label">Phone</span>
+              <p><a href={siteConfig.phoneHref}>{siteConfig.phone}</a></p>
+            </div>
+            <div class="contact-info-item">
+              <span class="contact-label">Instagram</span>
+              <p>
+                <a href={siteConfig.instagramUrl} target="_blank" rel="noreferrer">
+                  {siteConfig.instagram}
+                </a>
+              </p>
+            </div>
+            <div class="contact-info-item">
+              <span class="contact-label">Hours</span>
+              <p>{siteConfig.hours}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-shell reveal">
+          <div class="form-shell-header">
+            <h3>Book Service</h3>
+            <p>Tell us what your vehicle needs and we&rsquo;ll follow up.</p>
+          </div>
+
+          <form
+            class="contact-form"
+            name="contact"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="phone-field"
+          >
+            <input type="hidden" name="form-name" value="contact" />
+            <p class="hidden">
+              <label>
+                Don&rsquo;t fill this out if you&rsquo;re human: <input name="phone-field" />
+              </label>
+            </p>
+            <label>
+              Full Name
+              <input type="text" name="name" required />
+            </label>
+            <label>
+              Email
+              <input type="email" name="email" required />
+            </label>
+            <label>
+              Phone
+              <input type="tel" name="phone" required />
+            </label>
+            <label>
+              Vehicle / Service Needed
+              <input type="text" name="service" required />
+            </label>
+            <label>
+              Message
+              <textarea name="message" rows="6" required></textarea>
+            </label>
+            <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

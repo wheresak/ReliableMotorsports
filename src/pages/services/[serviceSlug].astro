@@ -1,0 +1,52 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { services } from '../../lib/services';
+import { siteConfig } from '../../lib/siteConfig';
+
+export function getStaticPaths() {
+  return services.map((service) => ({
+    params: { serviceSlug: service.slug },
+    props: { service },
+  }));
+}
+
+const { service } = Astro.props;
+---
+
+<Layout title={service.title.replace(' — Scarborough, ON', '')} description={service.intro}>
+  <main class="section">
+    <div class="container">
+      <div class="page-header reveal">
+        <div class="eyebrow">{service.title}</div>
+        <h1>{service.title}</h1>
+        <p>{service.intro}</p>
+      </div>
+
+      <div class="detail-grid">
+        <div class="detail-panel reveal">
+          <h2>What&rsquo;s Included</h2>
+          <ul>
+            {service.includes.map((item: string) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </div>
+        <div class="detail-panel reveal">
+          <h2>Signs You Need This Service</h2>
+          <ul>
+            {service.signs.map((item: string) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <div class="service-cta reveal">
+        <p>Book a service appointment in Scarborough today.</p>
+        <a href={siteConfig.phoneHref} class="btn btn-primary">
+          Call {siteConfig.phone}
+        </a>
+      </div>
+    </div>
+  </main>
+</Layout>

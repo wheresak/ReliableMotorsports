@@ -1,0 +1,31 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { blogPosts } from '../../lib/blog';
+
+export function getStaticPaths() {
+  return blogPosts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+---
+
+<Layout title={post.title} description={post.excerpt}>
+  <main class="section">
+    <div class="container">
+      <div class="page-header reveal">
+        <div class="eyebrow">Blog</div>
+        <h1>{post.title}</h1>
+        <p>{post.excerpt}</p>
+      </div>
+
+      <article class="blog-article reveal" set:html={post.contentHtml} />
+
+      <p style="margin-top:32px;">
+        <a href="/blog" class="text-link">Back to blog</a>
+      </p>
+    </div>
+  </main>
+</Layout>

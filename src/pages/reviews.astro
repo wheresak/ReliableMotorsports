@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { siteConfig } from '../lib/siteConfig';
+import { reviews } from '../lib/reviews';
+---
+
+<Layout title="Reviews" description="Top customer feedback from Reliable Motorsports clients in Scarborough and the GTA.">
+  <main class="section">
+    <div class="container">
+      <div class="page-header reveal">
+        <div class="eyebrow">Google Reviews</div>
+        <h1>What Drivers Are Saying</h1>
+        <p>Top customer feedback from Reliable Motorsports clients in Scarborough and the GTA.</p>
+      </div>
+
+      <div class="review-grid">
+        {reviews.map((review) => (
+          <div class="review-card reveal">
+            <p class="review-quote">&ldquo;{review.text}&rdquo;</p>
+            <p class="review-meta">{review.name} — {review.rating}★</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="cta-row">
+        <a href={siteConfig.googleReviewLink} target="_blank" rel="noreferrer" class="text-link">
+          Leave a Google review
+        </a>
+      </div>
+    </div>
+  </main>
+</Layout>

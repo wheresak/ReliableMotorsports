@@ -1,0 +1,39 @@
+---
+import { siteConfig } from '../lib/siteConfig';
+---
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <img src="/logo/reliable-logo.png" alt={`${siteConfig.siteName} logo`} class="footer-logo" />
+      <p>
+        {siteConfig.siteName} — professional automotive service, maintenance,
+        and custom work in Scarborough.
+      </p>
+    </div>
+
+    <div class="footer-links">
+      <h4>Navigation</h4>
+      {siteConfig.navItems.map((item) => (
+        <a href={item.href}>{item.label}</a>
+      ))}
+    </div>
+
+    <div class="footer-contact">
+      <h4>Contact</h4>
+      <p>{siteConfig.address}</p>
+      <p><a href={siteConfig.phoneHref}>{siteConfig.phone}</a></p>
+      <p>
+        <a href={siteConfig.instagramUrl} target="_blank" rel="noreferrer">
+          {siteConfig.instagram}
+        </a>
+      </p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container">
+      <p>&copy; {new Date().getFullYear()} {siteConfig.siteName}. All rights reserved.</p>
+    </div>
+  </div>
+</footer>

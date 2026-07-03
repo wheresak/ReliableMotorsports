@@ -1,0 +1,34 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import heroImage from '../assets/images/hero-car-lift.png';
+import brakesImage from '../assets/images/brakes.jpeg';
+import liftImage from '../assets/images/lift.png';
+
+const galleryImages = [
+  { image: heroImage, alt: 'Car on a lift', caption: 'Shop bay setup' },
+  { image: brakesImage, alt: 'Brake service in progress', caption: 'Brake service and inspection' },
+  { image: liftImage, alt: 'Vehicle lift in the shop', caption: 'Professional shop equipment' },
+];
+---
+
+<Layout title="Gallery" description="Browse photos from the shop and recent service work to see how Reliable Motorsports operates.">
+  <main class="section">
+    <div class="container">
+      <div class="page-header reveal">
+        <div class="eyebrow">Shop + Work Photos</div>
+        <h1>Gallery</h1>
+        <p>Browse photos from the shop and recent service work to see how Reliable Motorsports operates.</p>
+      </div>
+
+      <div class="gallery-grid gallery-full">
+        {galleryImages.map((item) => (
+          <div class="gallery-item gallery-large reveal">
+            <Image src={item.image} alt={item.alt} />
+            <p class="gallery-caption">{item.caption}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </main>
+</Layout>

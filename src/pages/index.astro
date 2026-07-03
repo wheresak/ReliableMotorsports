@@ -1,0 +1,209 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import { siteConfig } from '../lib/siteConfig';
+import { services } from '../lib/services';
+import { reviews } from '../lib/reviews';
+import heroImage from '../assets/images/hero-car-lift.png';
+import brakesImage from '../assets/images/brakes.jpeg';
+import liftImage from '../assets/images/lift.png';
+
+const galleryImages = [
+  { image: heroImage, alt: 'Car on a lift at Reliable Motorsports' },
+  { image: brakesImage, alt: 'Brake service work' },
+  { image: liftImage, alt: 'Shop bay with a vehicle lift' },
+];
+---
+
+<Layout title={siteConfig.siteName}>
+  <main>
+    <section class="hero section" id="home">
+      <div class="container hero-shell">
+        <div class="hero-grid">
+          <div class="hero-copy reveal">
+            <div class="eyebrow">{siteConfig.siteName}</div>
+            <h1>Reliable Service. Quality Work. Built for Drivers Who Care.</h1>
+            <p class="hero-text">
+              Professional automotive service, maintenance, diagnostics, and custom work for
+              daily drivers and enthusiast builds alike — based in Scarborough, Ontario.
+            </p>
+
+            <div class="hero-buttons">
+              <a href="/contact" class="btn btn-primary">Book Service</a>
+              <a href="/services" class="btn btn-secondary">View Services</a>
+            </div>
+
+            <div class="hero-points">
+              <span>Diagnostics</span>
+              <span>Maintenance</span>
+              <span>Custom Work</span>
+              <span>Appointment Only</span>
+            </div>
+
+            <div class="hero-stats">
+              <div>
+                <strong>4.9★</strong>
+                <span>Google Rated</span>
+              </div>
+              <div>
+                <strong>Scarborough</strong>
+                <span>GTA Based</span>
+              </div>
+              <div>
+                <strong>100%</strong>
+                <span>Detail Focused</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual reveal">
+            <div class="hero-image-card">
+              <div class="hero-image-glow"></div>
+              <Image src={heroImage} alt="BMW inside Reliable Motorsports shop" class="hero-image" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section feature-strip reveal">
+      <div class="container feature-inner">
+        <div class="feature-card">
+          <h3>Expert Diagnostics</h3>
+          <p>Proper fault finding, real answers, and no guesswork.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Clean Execution</h3>
+          <p>Attention to detail on every install and service.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Direct Booking</h3>
+          <p>Call for availability or send an inquiry in seconds.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="eyebrow">What We Do</div>
+          <h2>Automotive Services Done Right</h2>
+          <p>
+            From essential maintenance to enthusiast-focused installs, we keep your vehicle
+            running properly and looking after the details that matter.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          {services.map((service, index) => (
+            <a href={`/services/${service.slug}`} class="card-link reveal">
+              <article class="service-card">
+                <div class="service-icon">{String(index + 1).padStart(2, '0')}</div>
+                <h3>{service.title.replace(' — Scarborough, ON', '')}</h3>
+                <p>{service.intro}</p>
+              </article>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container about-grid">
+        <div class="about-copy reveal">
+          <div class="eyebrow">About Us</div>
+          <h2>A Shop Built on Dependable Work and Clean Execution</h2>
+          <p>
+            Reliable Motorsports is focused on delivering honest automotive service with the
+            attention to detail enthusiasts expect. Whether your vehicle needs maintenance,
+            repairs, diagnostics, or custom installation work, our goal is simple: do the job
+            properly and treat every car with care.
+          </p>
+          <p>
+            <a href="/about" class="text-link">Learn more about our shop</a>
+          </p>
+        </div>
+
+        <div class="about-panels reveal">
+          <div class="about-panel">
+            <h3>Quality Workmanship</h3>
+            <p>Clean, careful service with a focus on doing things the right way.</p>
+          </div>
+          <div class="about-panel">
+            <h3>Honest Service</h3>
+            <p>Straightforward communication and dependable support you can trust.</p>
+          </div>
+          <div class="about-panel">
+            <h3>Enthusiast Mindset</h3>
+            <p>Built for daily drivers, weekend cars, and owners who pay attention to the details.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="eyebrow">What Drivers Are Saying</div>
+          <h2>Trusted local reviews from drivers across the GTA.</h2>
+        </div>
+        <div class="review-grid">
+          {reviews.slice(0, 3).map((review) => (
+            <div class="review-card reveal">
+              <p class="review-quote">&ldquo;{review.text}&rdquo;</p>
+              <p class="review-meta">{review.name} — {review.rating}★</p>
+            </div>
+          ))}
+        </div>
+        <div class="cta-row">
+          <a href="/reviews" class="text-link">Read more reviews</a>
+          <a href={siteConfig.googleReviewLink} target="_blank" rel="noreferrer" class="text-link">
+            Leave a Google review
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="gallery">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="eyebrow">Gallery</div>
+          <h2>Shop Preview</h2>
+          <p>A first look inside Reliable Motorsports.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="gallery-card gallery-card-large reveal">
+            <Image src={galleryImages[0].image} alt={galleryImages[0].alt} />
+          </div>
+          <div class="gallery-side">
+            <div class="gallery-card reveal">
+              <Image src={galleryImages[1].image} alt={galleryImages[1].alt} />
+            </div>
+            <div class="gallery-card reveal">
+              <Image src={galleryImages[2].image} alt={galleryImages[2].alt} />
+            </div>
+          </div>
+        </div>
+        <div class="cta-row">
+          <a href="/gallery" class="text-link">View the full gallery</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="hero-shell reveal" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px;">
+          <div>
+            <div class="eyebrow">Let&rsquo;s Get Your Car In</div>
+            <h2 style="margin:0;font-size:clamp(1.8rem,3.4vw,2.6rem);letter-spacing:-0.03em;">Book Service at Reliable Motorsports</h2>
+          </div>
+          <div class="hero-buttons" style="margin:0;">
+            <a href="/contact" class="btn btn-primary">Book Service</a>
+            <a href={siteConfig.phoneHref} class="btn btn-secondary">{siteConfig.phone}</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

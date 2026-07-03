@@ -2,7 +2,14 @@
   "permissions": {
     "allow": [
       "Bash(git init *)",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(npm init *)",
+      "Bash(npm install *)",
+      "Bash(npx playwright *)",
+      "Bash(mkdir -p screenshots)",
+      "Bash(node shot.js)",
+      "Bash(node shot2.js)"
     ]
   }
 }

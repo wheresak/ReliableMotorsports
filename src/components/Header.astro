@@ -1,0 +1,56 @@
+---
+import { siteConfig } from '../lib/siteConfig';
+
+const currentPath = Astro.url.pathname;
+function isActive(href: string) {
+  if (href === '/') return currentPath === '/';
+  return currentPath.startsWith(href);
+}
+---
+
+<div class="topbar">
+  <div class="container topbar-inner">
+    <span class="topbar-item">Scarborough, ON</span>
+    <span class="topbar-separator"></span>
+    <a class="topbar-item" href={siteConfig.phoneHref}>{siteConfig.phone}</a>
+    <span class="topbar-separator"></span>
+    <a class="topbar-item" href={siteConfig.instagramUrl} target="_blank" rel="noreferrer">
+      {siteConfig.instagram}
+    </a>
+  </div>
+</div>
+
+<header class="header" id="header">
+  <div class="container header-inner">
+    <a href="/" class="logo-wrap" aria-label={`${siteConfig.siteName} home`}>
+      <img src="/logo/reliable-logo.png" alt={`${siteConfig.siteName} logo`} class="logo" />
+    </a>
+
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      {siteConfig.navItems.map((item) => (
+        <a href={item.href} class={isActive(item.href) ? 'active' : ''}>{item.label}</a>
+      ))}
+    </nav>
+
+    <div class="header-actions">
+      <a href="/contact" class="btn btn-primary desktop-cta">Book Service</a>
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+        aria-controls="mobileMenu"
+      >
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    {siteConfig.navItems.map((item) => (
+      <a href={item.href} class="mobile-link">{item.label}</a>
+    ))}
+    <a href="/contact" class="btn btn-primary mobile-menu-cta">Book Service</a>
+  </div>
+</header>
