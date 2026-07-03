@@ -1,5 +1,7 @@
 ---
+import { Image } from 'astro:assets';
 import { siteConfig } from '../lib/siteConfig';
+import logo from '../assets/logo/reliable-logo.png';
 
 const currentPath = Astro.url.pathname;
 function isActive(href: string) {
@@ -23,7 +25,7 @@ function isActive(href: string) {
 <header class="header" id="header">
   <div class="container header-inner">
     <a href="/" class="logo-wrap" aria-label={`${siteConfig.siteName} home`}>
-      <img src="/logo/reliable-logo.png" alt={`${siteConfig.siteName} logo`} class="logo" />
+      <Image src={logo} alt={`${siteConfig.siteName} logo`} class="logo" width={500} height={245} loading="eager" />
     </a>
 
     <nav class="desktop-nav" aria-label="Primary navigation">

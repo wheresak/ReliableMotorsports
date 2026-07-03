@@ -17,7 +17,7 @@ import { services, serviceOverview } from '../../lib/services';
           <a href={`/services/${service.slug}`} class="card-link reveal">
             <article class="service-card">
               <div class="service-icon">{String(index + 1).padStart(2, '0')}</div>
-              <h3>{service.title.replace(' — Scarborough, ON', '')}</h3>
+              <h2>{service.title.replace(' — Scarborough, ON', '')}</h2>
               <p>{service.intro}</p>
             </article>
           </a>

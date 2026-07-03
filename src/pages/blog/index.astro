@@ -20,7 +20,7 @@ const posts = (await getCollection('blog')).sort(
         {posts.map((post) => (
           <a href={`/blog/${post.id}`} class="card-link reveal">
             <article class="card">
-              <h3>{post.data.title}</h3>
+              <h2>{post.data.title}</h2>
               <p>{post.data.description}</p>
             </article>
           </a>

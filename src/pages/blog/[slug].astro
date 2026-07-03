@@ -12,6 +12,7 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+const isContactLink = post.data.relatedService === '/contact';
 ---
 
 <Layout title={post.data.title} description={post.data.description}>
@@ -27,7 +28,14 @@ const { Content } = await render(post);
         <Content />
       </article>
 
-      <p style="margin-top:32px;">
+      <div class="service-cta reveal">
+        <p>{isContactLink ? 'Have questions or ready to book?' : 'Ready to get this handled by Reliable Motorsports?'}</p>
+        <a href={post.data.relatedService} class="btn btn-primary">
+          {isContactLink ? 'Contact Us' : 'Book This Service'}
+        </a>
+      </div>
+
+      <p class="back-link">
         <a href="/blog" class="text-link">Back to blog</a>
       </p>
     </div>

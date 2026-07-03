@@ -1,11 +1,13 @@
 ---
+import { Image } from 'astro:assets';
 import { siteConfig } from '../lib/siteConfig';
+import logo from '../assets/logo/reliable-logo.png';
 ---
 
 <footer class="footer">
   <div class="container footer-grid">
     <div class="footer-brand">
-      <img src="/logo/reliable-logo.png" alt={`${siteConfig.siteName} logo`} class="footer-logo" />
+      <Image src={logo} alt={`${siteConfig.siteName} logo`} class="footer-logo" width={500} height={245} loading="lazy" />
       <p>
         {siteConfig.siteName} — professional automotive service, maintenance,
         and custom work in Scarborough.

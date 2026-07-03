@@ -62,7 +62,15 @@ const galleryImages = [
           <div class="hero-visual reveal">
             <div class="hero-image-card">
               <div class="hero-image-glow"></div>
-              <Image src={heroImage} alt="Shop bay setup at Reliable Motorsports" class="hero-image" width={700} height={900} />
+              <Image
+                src={heroImage}
+                alt="Shop bay setup at Reliable Motorsports"
+                class="hero-image"
+                width={700}
+                height={900}
+                loading="eager"
+                fetchpriority="high"
+              />
             </div>
           </div>
         </div>
@@ -196,12 +204,12 @@ const galleryImages = [
 
     <section class="section" id="contact">
       <div class="container">
-        <div class="hero-shell reveal" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px;">
+        <div class="hero-shell final-cta-band reveal">
           <div>
             <div class="eyebrow">Let&rsquo;s Get Your Car In</div>
-            <h2 style="margin:0;font-size:clamp(1.8rem,3.4vw,2.6rem);letter-spacing:-0.03em;">Book Service at Reliable Motorsports</h2>
+            <h2 class="final-cta-heading">Book Service at Reliable Motorsports</h2>
           </div>
-          <div class="hero-buttons" style="margin:0;">
+          <div class="hero-buttons final-cta-actions">
             <a href="/contact" class="btn btn-primary">Book Service</a>
             <a href={siteConfig.phoneHref} class="btn btn-secondary">{siteConfig.phone}</a>
           </div>

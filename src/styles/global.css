@@ -81,6 +81,49 @@ textarea {
   background: rgba(225, 6, 0, 0.3);
 }
 
+.skip-link {
+  position: absolute;
+  top: -60px;
+  left: 16px;
+  z-index: 100;
+  padding: 12px 20px;
+  border-radius: 12px;
+  background: var(--color-red);
+  color: #fff;
+  font-weight: 700;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 16px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.final-cta-band {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.final-cta-heading {
+  margin: 0;
+  font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+  letter-spacing: -0.03em;
+}
+
+.final-cta-actions {
+  margin: 0;
+}
+
+.back-link {
+  margin-top: 32px;
+}
+
 /* Background layers */
 
 .site-bg {
@@ -667,7 +710,9 @@ textarea {
   margin-bottom: 18px;
 }
 
+.service-card h2,
 .service-card h3,
+.card h2,
 .card h3 {
   margin: 0 0 10px;
   font-size: 1.24rem;
@@ -722,8 +767,8 @@ textarea {
 }
 
 .about-panel h3,
-.pillar-card h3,
-.faq-card h3 {
+.pillar-card h2,
+.faq-card h2 {
   margin: 0 0 10px;
   font-size: 1.15rem;
 }
@@ -895,7 +940,7 @@ textarea {
   margin-bottom: 18px;
 }
 
-.form-shell-header h3 {
+.form-shell-header h2 {
   margin: 0 0 8px;
   font-size: 1.45rem;
 }

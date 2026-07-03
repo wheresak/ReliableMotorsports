@@ -8,9 +8,15 @@ interface Props {
   title: string;
   description?: string;
   ogImage?: string;
+  noindex?: boolean;
 }
 
-const { title, description = siteConfig.description, ogImage = '/logo/reliable-logo.png' } = Astro.props;
+const {
+  title,
+  description = siteConfig.description,
+  ogImage = '/logo/reliable-logo.png',
+  noindex = false,
+} = Astro.props;
 
 const pageTitle = title === siteConfig.siteName ? title : `${title} | ${siteConfig.siteName}`;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -31,6 +37,15 @@ const jsonLd = {
     postalCode: 'M1J 1L1',
     addressCountry: 'CA',
   },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 43.7361963,
+    longitude: -79.2418991,
+  },
+  areaServed: [
+    { '@type': 'City', name: 'Scarborough' },
+    { '@type': 'AdministrativeArea', name: 'Greater Toronto Area' },
+  ],
   sameAs: [siteConfig.instagramUrl],
 };
 ---
@@ -43,6 +58,7 @@ const jsonLd = {
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
 
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -72,11 +88,15 @@ const jsonLd = {
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>
   <body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+
     <div class="site-bg"></div>
     <div class="site-grid"></div>
 
     <Header />
-    <slot />
+    <div id="main-content">
+      <slot />
+    </div>
     <Footer />
 
     <script src="../scripts/site.ts"></script>
