@@ -10,13 +10,13 @@ import tireMachineImage from '../assets/images/tire-machine-service.jpg';
 import audiQ5Image from '../assets/images/audi-q5-service.jpg';
 
 const galleryImages = [
-  { image: trackCarImage, alt: 'Wheel service on a track-prepped car at Reliable Motorsports', caption: 'Track car wheel service' },
-  { image: acuraImage, alt: 'Acura RDX on the lift for suspension and brake work', caption: 'Suspension and brake service' },
-  { image: tireMachineImage, alt: 'Mounting a tire on an Audi wheel', caption: 'Tire mounting and balancing' },
-  { image: audiQ5Image, alt: 'Audi Q5 in the shop for service', caption: 'Audi Q5 in for service' },
-  { image: heroImage, alt: 'Car on a lift', caption: 'Shop bay setup' },
-  { image: brakesImage, alt: 'Brake service in progress', caption: 'Brake service and inspection' },
-  { image: liftImage, alt: 'Vehicle lift in the shop', caption: 'Professional shop equipment' },
+  { image: trackCarImage, alt: 'Wheel service on a track-prepped car at Reliable Motorsports' },
+  { image: acuraImage, alt: 'Acura RDX on the lift for suspension and brake work' },
+  { image: tireMachineImage, alt: 'Mounting a tire on an Audi wheel' },
+  { image: audiQ5Image, alt: 'Audi Q5 in the shop for service' },
+  { image: heroImage, alt: 'Car on a lift' },
+  { image: brakesImage, alt: 'Brake service in progress' },
+  { image: liftImage, alt: 'Vehicle lift in the shop' },
 ];
 ---
 
@@ -33,7 +33,6 @@ const galleryImages = [
         {galleryImages.map((item) => (
           <div class="gallery-item reveal">
             <Image src={item.image} alt={item.alt} width={640} height={480} />
-            <p class="gallery-caption">{item.caption}</p>
           </div>
         ))}
       </div>

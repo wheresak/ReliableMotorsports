@@ -842,19 +842,6 @@ textarea {
   gap: 22px;
 }
 
-.gallery-caption {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: 0;
-  padding: 20px 24px;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), transparent);
-  color: var(--color-silver);
-  font-weight: 600;
-  font-size: 0.95rem;
-}
-
 .gallery-mosaic {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));

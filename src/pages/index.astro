@@ -4,12 +4,12 @@ import { Image } from 'astro:assets';
 import { siteConfig } from '../lib/siteConfig';
 import { services } from '../lib/services';
 import { reviews } from '../lib/reviews';
-import acuraImage from '../assets/images/acura-suspension-service.jpg';
+import shopBayImage from '../assets/images/hero-car-lift.png';
 import trackCarImage from '../assets/images/track-car-wheel-service.jpg';
 import tireMachineImage from '../assets/images/tire-machine-service.jpg';
 import audiQ5Image from '../assets/images/audi-q5-service.jpg';
 
-const heroImage = acuraImage;
+const heroImage = shopBayImage;
 
 const galleryImages = [
   { image: trackCarImage, alt: 'Wheel service on a track-prepped car at Reliable Motorsports' },
@@ -62,7 +62,7 @@ const galleryImages = [
           <div class="hero-visual reveal">
             <div class="hero-image-card">
               <div class="hero-image-glow"></div>
-              <Image src={heroImage} alt="Acura RDX on the lift at Reliable Motorsports" class="hero-image" width={700} height={900} />
+              <Image src={heroImage} alt="Shop bay setup at Reliable Motorsports" class="hero-image" width={700} height={900} />
             </div>
           </div>
         </div>
