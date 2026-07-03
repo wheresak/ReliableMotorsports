@@ -1,0 +1,21 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { siteConfig } from '../lib/siteConfig';
+---
+
+<Layout title="Message Sent" description="Thanks for reaching out to Reliable Motorsports — we'll follow up shortly." noindex={true}>
+  <main class="section">
+    <div class="container text-center">
+      <div class="page-header reveal">
+        <div class="eyebrow">Message Sent</div>
+        <h1>Thanks — We&rsquo;ll Be In Touch</h1>
+        <p>
+          Your message has been received. We&rsquo;ll follow up to confirm details and get your
+          vehicle booked in. If it&rsquo;s urgent, call us directly at{' '}
+          <a href={siteConfig.phoneHref} class="text-link">{siteConfig.phone}</a>.
+        </p>
+      </div>
+      <a href="/" class="btn btn-primary">Back to Home</a>
+    </div>
+  </main>
+</Layout>

@@ -7,7 +7,13 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   site: 'https://reliablemotorsports.ca',
   output: 'static',
-  integrations: [react(), sitemap(), mdx()],
+  integrations: [
+    react(),
+    sitemap({
+      filter: (page) => !page.includes('/thank-you'),
+    }),
+    mdx(),
+  ],
   vite: {
     plugins: [tailwindcss()],
   },
