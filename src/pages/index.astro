@@ -4,14 +4,17 @@ import { Image } from 'astro:assets';
 import { siteConfig } from '../lib/siteConfig';
 import { services } from '../lib/services';
 import { reviews } from '../lib/reviews';
-import heroImage from '../assets/images/hero-car-lift.png';
-import brakesImage from '../assets/images/brakes.jpeg';
-import liftImage from '../assets/images/lift.png';
+import acuraImage from '../assets/images/acura-suspension-service.jpg';
+import trackCarImage from '../assets/images/track-car-wheel-service.jpg';
+import tireMachineImage from '../assets/images/tire-machine-service.jpg';
+import audiQ5Image from '../assets/images/audi-q5-service.jpg';
+
+const heroImage = acuraImage;
 
 const galleryImages = [
-  { image: heroImage, alt: 'Car on a lift at Reliable Motorsports' },
-  { image: brakesImage, alt: 'Brake service work' },
-  { image: liftImage, alt: 'Shop bay with a vehicle lift' },
+  { image: trackCarImage, alt: 'Wheel service on a track-prepped car at Reliable Motorsports' },
+  { image: tireMachineImage, alt: 'Mounting a tire on an Audi wheel' },
+  { image: audiQ5Image, alt: 'Audi Q5 in the shop for service' },
 ];
 ---
 
@@ -59,7 +62,7 @@ const galleryImages = [
           <div class="hero-visual reveal">
             <div class="hero-image-card">
               <div class="hero-image-glow"></div>
-              <Image src={heroImage} alt="BMW inside Reliable Motorsports shop" class="hero-image" />
+              <Image src={heroImage} alt="Acura RDX on the lift at Reliable Motorsports" class="hero-image" width={700} height={900} />
             </div>
           </div>
         </div>
@@ -174,14 +177,14 @@ const galleryImages = [
 
         <div class="gallery-grid">
           <div class="gallery-card gallery-card-large reveal">
-            <Image src={galleryImages[0].image} alt={galleryImages[0].alt} />
+            <Image src={galleryImages[0].image} alt={galleryImages[0].alt} width={800} height={900} />
           </div>
           <div class="gallery-side">
             <div class="gallery-card reveal">
-              <Image src={galleryImages[1].image} alt={galleryImages[1].alt} />
+              <Image src={galleryImages[1].image} alt={galleryImages[1].alt} width={600} height={420} />
             </div>
             <div class="gallery-card reveal">
-              <Image src={galleryImages[2].image} alt={galleryImages[2].alt} />
+              <Image src={galleryImages[2].image} alt={galleryImages[2].alt} width={600} height={420} />
             </div>
           </div>
         </div>

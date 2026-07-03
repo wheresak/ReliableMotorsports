@@ -10,7 +10,9 @@
       "Bash(mkdir -p screenshots)",
       "Bash(node shot.js)",
       "Bash(node shot2.js)",
-      "Bash(node -e ' *)"
+      "Bash(node -e ' *)",
+      "Bash(find \"C:\\\\Users\\\\adamk\\\\Downloads\" -maxdepth 1 -type f \\\\\\( -iname \"*.jpg\" -o -iname \"*.jpeg\" -o -iname \"*.png\" -o -iname \"*.heic\" \\\\\\) -newermt \"2026-07-03 00:00:00\" 2>/dev/null)",
+      "Read(//c/Users/adamk/Downloads/**)"
     ]
   }
 }

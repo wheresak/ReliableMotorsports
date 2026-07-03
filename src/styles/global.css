@@ -855,6 +855,17 @@ textarea {
   font-size: 0.95rem;
 }
 
+.gallery-mosaic {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 22px;
+}
+
+.gallery-mosaic .gallery-item {
+  min-height: 0;
+  aspect-ratio: 4 / 3;
+}
+
 /* Contact */
 
 .contact-info-list {
