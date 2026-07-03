@@ -1,27 +1,31 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { blogPosts } from '../../lib/blog';
+import { getCollection, render } from 'astro:content';
 
-export function getStaticPaths() {
-  return blogPosts.map((post) => ({
-    params: { slug: post.slug },
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id },
     props: { post },
   }));
 }
 
 const { post } = Astro.props;
+const { Content } = await render(post);
 ---
 
-<Layout title={post.title} description={post.excerpt}>
+<Layout title={post.data.title} description={post.data.description}>
   <main class="section">
     <div class="container">
       <div class="page-header reveal">
         <div class="eyebrow">Blog</div>
-        <h1>{post.title}</h1>
-        <p>{post.excerpt}</p>
+        <h1>{post.data.title}</h1>
+        <p>{post.data.description}</p>
       </div>
 
-      <article class="blog-article reveal" set:html={post.contentHtml} />
+      <article class="blog-article reveal">
+        <Content />
+      </article>
 
       <p style="margin-top:32px;">
         <a href="/blog" class="text-link">Back to blog</a>

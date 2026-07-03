@@ -9,7 +9,8 @@
       "Bash(npx playwright *)",
       "Bash(mkdir -p screenshots)",
       "Bash(node shot.js)",
-      "Bash(node shot2.js)"
+      "Bash(node shot2.js)",
+      "Bash(node -e ' *)"
     ]
   }
 }

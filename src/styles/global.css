@@ -994,6 +994,20 @@ textarea {
   gap: 8px;
 }
 
+.blog-article a {
+  color: var(--color-silver);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(217, 221, 227, 0.4);
+  transition: color 0.25s ease, text-decoration-color 0.25s ease;
+}
+
+.blog-article a:hover {
+  color: #fff;
+  text-decoration-color: var(--color-red);
+}
+
 /* Footer */
 
 .footer {
